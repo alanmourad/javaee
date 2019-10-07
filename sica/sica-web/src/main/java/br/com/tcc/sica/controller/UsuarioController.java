@@ -111,13 +111,9 @@ public class UsuarioController {
     
     public String loginUsuario() {
 
-    	//String usuario = "teste";
-    	//String senha = "teste";
-    	
+
     	newUser = memberRegistration.getUsuario(newUser.getName(), newUser.getPassword());
-    	
-    	//testes
-    	//newUser = memberRegistration.getUsuario(usuario, senha);
+
 
         if (newUser == null) {
         	newUser = new Usuario();
