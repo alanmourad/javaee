@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:p="http://primefaces.org/ui">
+  
+<h:head>
+  
+</h:head>
+  
+<h:body>
+
+  <h:form>
+  	<div class="ui-fluid">
+  <h1>Login</h1>
+  
+    <p:messages id="messages" />
+    <p:panelGrid columns="2">
+      <p:outputLabel for="name" value="Nome 
+      Usuário:" />
+      <p:inputText id="name"
+      value="#{newUser.name}" />
+       
+      <p:outputLabel for="password" value="Senha:" />
+      <p:password id="password" value="#{newUser.password}" />
+       
+      <h:commandButton value="Enviar"
+      icon="ui-icon-star" action="#{usuarioController.loginUsuario}" ajax="false">
+      </h:commandButton>
+ 
+    </p:panelGrid>
+    </div>
+  </h:form>
+</h:body>
+</html>
