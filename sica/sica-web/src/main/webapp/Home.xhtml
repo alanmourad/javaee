@@ -1,71 +1,278 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-    JBoss, Home of Professional Open Source
-    Copyright 2013, Red Hat, Inc. and/or its affiliates, and individual
-    contributors by the @authors tag. See the copyright.txt in the
-    distribution for a full listing of individual contributors.
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>SICA</title>
+	<script src="resources/bootstrap/js/jquery.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.min.js"></script>
+	<script src="resources/bootstrap/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/bootstrap.css" />
+	<link rel="stylesheet"
+		href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+		type="text/css" />
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    http://www.apache.org/licenses/LICENSE-2.0
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui"
-	xmlns:h="http://java.sun.com/jsf/html" template="/WEB-INF/templates/main.xhtml">
-	
- 
-
-		<style type="text/css">
-.label {
-	width: 20%;
-	padding: 4px;
+	<style>
+.ol-attribution.ol-logo-only, .ol-attribution.ol-uncollapsible {
+	max-width: calc(100% - 3em) !important;
+	height: 1.5em !important;
 }
 
-.value {
-	width: 80%;
-	padding: 4px;
+.ol-control button, .ol-attribution, .ol-scale-line-inner {
+	font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica,
+		sans-serif !important;
 }
 
-.grid {
-	width: 50%;
+.ol-popup {
+	font-family: 'Lucida Grande', Verdana, Geneva, Lucida, Arial, Helvetica,
+		sans-serif !important;
+	font-size: 12px;
+	position: absolute;
+	background-color: white;
+	-webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+	padding: 15px;
+	border-radius: 10px;
+	border: 1px solid #cccccc;
+	bottom: 12px;
+	left: -50px;
+	min-width: 100px;
 }
 
-.error {
-	color: red;
+.ol-popup:after, .ol-popup:before {
+	top: 100%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
 }
 
-.outputLabel {
-	font-weight: bold;
+.ol-popup:after {
+	border-top-color: white;
+	border-width: 10px;
+	left: 48px;
+	margin-left: -10px;
 }
 
-.grid {
-	width: 33%;
-	padding: 4px;
+.ol-popup:before {
+	border-top-color: #cccccc;
+	border-width: 11px;
+	left: 48px;
+	margin-left: -11px;
 }
 
-.ui-outputlabel {
-	font-weight: bold;
+.ol-popup-closer {
+	text-decoration: none;
+	position: absolute;
+	top: 2px;
+	right: 8px;
 }
 
-.ui-orderlist .ui-orderlist-list {
-	height: auto;
+.ol-popup-closer:after {
+	content: "✖";
+	color: #c3c3c3;
+}
+
+.map-container-2 {
+	overflow: hidden;
+	padding-bottom: 56.25%;
+	position: relative;
+	height: 0;
+}
+
+.map-container-2 iframe {
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	position: absolute;
 }
 </style>
 
+</h:head>
 
-			<ui:define name="content">
-			<ui:include src="/WEB-INF/templates/main.xhtml"></ui:include>
+
+
+<h:body>
+
+<!-- 	<nav class="navbar navbar-expand-lg navbar-light bg-light"> <a class="navbar-brand" href="#"></a> -->
+<!-- 	<button class="navbar-toggler" type="button" data-toggle="collapse" -->
+<!-- 		data-target="#conteudoNavbarSuportado" -->
+<!-- 		aria-controls="conteudoNavbarSuportado" aria-expanded="false" -->
+<!-- 		aria-label="Alterna navegação"> -->
+<!-- 		<span class="navbar-toggler-icon"></span> -->
+<!-- 	</button> -->
+	
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+
+	<div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+		<ul class="navbar-nav mr-auto">
+			<!--       <li class="nav-item active"> -->
+			<!--         <a class="nav-link" href="#">Inicio <span class="sr-only">(página atual)</span></a> -->
+			<!--       </li> -->
+			<li class="nav-item"><a class="nav-link"
+				href="formCadastroUsuario.xhtml">Gerenciamento de Usuários</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Monitoramento</a>
+			</li>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Gerenciamento de Insumos </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="#">Cadastro de Insumos</a> <a
+						class="dropdown-item" href="#">Lista de Insumos</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Algo mais aqui</a>
+				</div></li>
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Agendamento de manutenção </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+					<a class="dropdown-item" href="#">Cadastrar Agenda</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#">Realizar agendamento</a> <a
+						class="dropdown-item" href="#">Lista de agendamentos</a>
+				</div></li>
+
+
+
+			<li class="nav-item"><a class="nav-link disabled" href="#">Monitoramento
+					Barragens</a></li>
+			<li class="nav-item"><a class="nav-link disabled" href="#">Relatórios</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<!--       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Sair" /> -->
+			<button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sair</button>
+		</form>
+	</div>
+	</nav>
 	<br></br>
+ 
 
-</ui:define>
+	<div id="map-container-google-2" class="z-depth-1-half map-container"
+		style="height: 600px">
+		<div id="map"
+			style="width: 50%; height: 100%; float: right; padding-right: 70px; padding-top: 30px;">
+			<div id="popup" class="ol-popup">
+				<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+				<div id="popup-content"></div>
+			</div>
 
 
-</ui:composition>
+		</div>
+	</div>
+
+
+	<script
+		src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+	<script>
+		var attribution = new ol.control.Attribution({
+			collapsible : true
+		});
+
+		var map = new ol.Map(
+				{
+					controls : ol.control.defaults({
+						attribution : false
+					}).extend([ attribution ]),
+					layers : [ new ol.layer.Tile(
+							{
+								source : new ol.source.OSM(
+										{
+											attributions : [
+													ol.source.OSM.ATTRIBUTION,
+													'Tiles courtesy of <a href="https://geo6.be/">GEO-6</a>' ],
+											maxZoom : 30
+										})
+							}) ],
+					target : 'map',
+					view : new ol.View({
+						center : ol.proj
+								.fromLonLat([ -46.6805361, -23.5733391 ]),
+						maxZoom : 30,
+						zoom : 12
+					})
+				});
+
+		var style = new ol.style.Style({
+			fill : new ol.style.Fill({
+				color : 'rgba(255, 255, 50, 1)'
+			}),
+			stroke : new ol.style.Stroke({
+				width : 2,
+				color : 'rgba(255, 100, 50, 0.8)'
+			}),
+			image : new ol.style.Circle({
+				fill : new ol.style.Fill({
+					color : 'rgba(255,0,0, 1)'
+				}),
+				stroke : new ol.style.Stroke({
+					width : 1,
+					color : 'rgba(255, 255, 0, 1)'
+				}),
+				radius : 7
+			}),
+		});
+
+		var layer = new ol.layer.Vector({
+			style : style,
+			source : new ol.source.Vector({
+				features : [ new ol.Feature({
+					geometry : new ol.geom.Point(ol.proj.fromLonLat([
+							-46.6805361, -23.5733391 ]))
+				}) ]
+			})
+		});
+		map.addLayer(layer);
+
+		var container = document.getElementById('popup');
+		var content = document.getElementById('popup-content');
+		var closer = document.getElementById('popup-closer');
+
+		var overlay = new ol.Overlay({
+			element : container,
+			autoPan : true,
+			autoPanAnimation : {
+				duration : 250
+			}
+		});
+		map.addOverlay(overlay);
+
+		closer.onclick = function() {
+			overlay.setPosition(undefined);
+			closer.blur();
+			return false;
+		};
+
+		map.on('singleclick', function(event) {
+			if (map.hasFeatureAtPixel(event.pixel) === true) {
+				var coordinate = event.coordinate;
+
+				content.innerHTML = '<b>Crítica</b><br />Barragem 1';
+				overlay.setPosition(coordinate);
+			} else {
+				overlay.setPosition(undefined);
+				closer.blur();
+			}
+		});
+
+		content.innerHTML = '<b>Crítica</b><br />Barragem 1';
+		overlay.setPosition(ol.proj.fromLonLat([ -46.6805361, -23.5733391 ]));
+	</script>
+</h:body>
+
+</html>
