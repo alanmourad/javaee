@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:h="http://java.sun.com/jsf/html"
+   xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>SICA</title>
+        <script src="resources/bootstrap/js/jquery.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="resources/bootstrap/js/bootstrap.js"></script>
+<!--         <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.min.css"/> -->
+         <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css"/>
+<!--           <link rel="stylesheet" type="text/css" href="resources/css/bootstrap-grid.css"/> -->
+    </h:head>
+    
+
+         
+    <h:body>
+             <div id="content">
+         <ui:insert name="content">
+   
+         
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <ul class="navbar-nav mr-auto">
+<!--       <li class="nav-item active"> -->
+<!--         <a class="nav-link" href="#">Inicio <span class="sr-only">(página atual)</span></a> -->
+<!--       </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="formCadastroUsuario.xhtml">Gerenciamento de Usuários</a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="#">Monitoramento</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Gerenciamento de Insumos
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Cadastro de Insumos</a>
+          <a class="dropdown-item" href="#">Lista de Insumos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Algo mais aqui</a>
+        </div>
+      </li>
+      
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Agendamento de manutenção
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        
+        <a class="dropdown-item" href="#">Cadastrar Agenda</a>
+        <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Realizar agendamento</a>
+          <a class="dropdown-item" href="#">Lista de agendamentos</a>
+        </div>
+      </li>
+      
+      
+      
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Monitoramento Barragens</a>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link disabled" href="#">Relatórios</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+<!--       <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Sair" /> -->
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Sair</button>
+    </form>
+  </div>
+</nav>
+        
+        
+
+  </ui:insert>
+</div>
+    </h:body>
+  
+
+
+</html>

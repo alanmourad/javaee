@@ -21,11 +21,13 @@ import javax.enterprise.inject.Model;
 import javax.enterprise.inject.Produces;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+ 
 import br.com.tcc.sica.model.Member;
 import br.com.tcc.sica.model.Usuario;
 import br.com.tcc.sica.service.UsuarioRegistro;
@@ -37,6 +39,7 @@ import br.com.tcc.sica.service.UsuarioRegistro;
 @Model
 @ManagedBean(name = "LoginMB")
 @ViewScoped
+@SessionScoped
 public class UsuarioController {
 
     @Inject
@@ -51,7 +54,6 @@ public class UsuarioController {
    
     //private Usuario loginUser;
   
-    
 
     @Produces
     @Named
@@ -84,6 +86,7 @@ public class UsuarioController {
     		memberRegistration.registerUser(newUser);
     	      facesContext.addMessage(null,
                       new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario cadastrado com sucesso", ""));
+    	 
               initNewMember();
 			
 		} catch (Exception e) {
@@ -97,8 +100,7 @@ public class UsuarioController {
     	try {
     		
     		memberRegistration.removeUser(newUser);
-    	      facesContext.addMessage(null,
-                      new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario cadastrado com sucesso", ""));
+  	 
               initNewMember();
 			
 		} catch (Exception e) {
@@ -125,7 +127,8 @@ public class UsuarioController {
           return null;
         } else {
         	
-              return "/main.xhtml";
+        	 
+              return "Home?faces-redirect=true";
         }
     }
     

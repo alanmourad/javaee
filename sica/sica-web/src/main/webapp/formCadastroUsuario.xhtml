@@ -19,15 +19,9 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:h="http://java.sun.com/jsf/html"
-	template="/WEB-INF/templates/default_.xhtml">
-	<ui:define name="content">
-		<h1></h1>
-
-		<div></div>
-
-		<h2></h2>
-		<p></p>
+	xmlns:h="http://java.sun.com/jsf/html" template="/WEB-INF/templates/main.xhtml">
+	
+ 
 
 		<style type="text/css">
 .label {
@@ -57,66 +51,69 @@
 	padding: 4px;
 }
 
+.ui-outputlabel {
+	font-weight: bold;
+}
 
-    .ui-outputlabel {
-        font-weight: bold;
-    }
-     
-    .ui-orderlist .ui-orderlist-list {
-        height: auto;
-    }
-
+.ui-orderlist .ui-orderlist-list {
+	height: auto;
+}
 </style>
 
 
-
+			<ui:define name="content">
+			<ui:include src="/WEB-INF/templates/main.xhtml"></ui:include>
+	<br></br>
 		<h:form id="reg">
-
+  <p:messages id="messages" showDetail="true" closable="true">
+        <p:autoUpdate />
+    </p:messages>
 			<p:growl id="growl" sticky="true" showDetail="false" />
 
 
 			<p:tab>
-				<p:panel header="Cadastro de usuário" >
-					<p:messages />
+				<p:panel header="Cadastro de usuário">
+				 
+				 
 
-
-					<p:panelGrid columns="2"  styleClass="ui-fluid">
+					<p:panelGrid columns="2">
 						<h:outputText value="Nome: *" />
-						<p:inputText value="#{newUser.name}" required="true" label="name"
-							style="width:1000px" />
-						 
-						
-						
+						<h:inputText value="#{newUser.name}" class="form-control" required="true" label="name"
+							style="width:990px" />
+
+
+
 						<h:outputText value="Email: *" />
-						<p:inputText value="#{newUser.email}" required="true"
-							label="email" style="width:1000px" />
-						 
+						<h:inputText value="#{newUser.email}" required="true"
+							label="email" class="form-control" style="width:990px" />
+
 
 						<h:outputText value="Telefone: *" />
-						<p:inputText value="#{newUser.phoneNumber}" style="width:500px" />
+						<h:inputText value="#{newUser.phoneNumber}"  class="form-control" style="width:500px" />
 
 
 						<p:outputLabel for="tipoAcesso" value="Tipo de acesso: *" />
-						<p:selectOneMenu id="tipoAcesso" value="#{newUser.tipoAcesso}"
-							style="width:1000px">
+						<h:selectOneMenu id="tipoAcesso" class="custom-select d-block w-100" value="#{newUser.tipoAcesso}"
+							style="width:990px">
 							<f:selectItem itemLabel="Selecione tipo" itemValue="" />
 							<f:selectItem itemLabel="Engenharia" itemValue="Engenharia" />
 							<f:selectItem itemLabel="Manutencao" itemValue="Manutencao" />
 							<f:selectItem itemLabel="Consultoria" itemValue="Consultoria" />
-						</p:selectOneMenu>
+						</h:selectOneMenu>
 						<h:outputLabel value="Senha: *" style="width:300px" />
+						
+						
 						<p:password id="password" required="true"
-							value="#{newUser.password}" style="width:500px" />
+ 							value="#{newUser.password}" class="form-control" style="width:200px" /> 
 
 
 					</p:panelGrid>
-
+ 
 					<br></br>
 					<br></br>
 					<h:commandButton id="register"
 						action="#{usuarioController.registerUser}" value="Salvar"
-						styleClass="register" />
-<!-- 						<p:commandButton value="Limpar" ajax="true" immediate="true" type="reset"/> -->
+						styleClass="register" class="btn btn-outline-primary my-2 my-sm-0" />
 					<h:messages styleClass="messages" errorClass="invalid"
 						infoClass="valid" warnClass="warning" globalOnly="true" />
 				</p:panel>
@@ -124,8 +121,7 @@
 			</p:tab>
 
 		</h:form>
+</ui:define>
 
 
-
-	</ui:define>
 </ui:composition>
