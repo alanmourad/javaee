@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="ui-g ui-lg">
+	
+       	<div class="ui-g-12 ui-lg-9 ui-md-9">
+			<p:outputLabel for="hpma" value="HPMA" />
+	        <p:inputTextarea id="hpma" rows="6" value="#{pacienteController.paciente.historico.hpma}"/>
+		</div>
+		
+ 		<p:selectManyCheckbox layout="responsive" columns="1" styleClass="ui-g-12 ui-lg-3 ui-md-3" 
+ 			id="itens" value="#{pacienteController.paciente.historico.itensHistorico}">
+ 			<f:selectItems value="#{pacienteController.historicoEnumValues}" 
+				var="historico" itemLabel="#{historico.descricao}" itemValue="#{historico}"/> 
+        </p:selectManyCheckbox> 
+       		
+       	<div class="ui-g-12 ui-lg-12 ui-md-12">
+			<p:outputLabel for="antecedentes" value="Antecedentes" />
+	        <p:inputTextarea id="antecedentes" rows="2" 
+	        	value="#{pacienteController.paciente.historico.antecedentes}"/>
+		</div>  
+        
+	</div>
+
+</ui:composition>

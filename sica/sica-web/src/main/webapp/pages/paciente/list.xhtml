@@ -1,0 +1,61 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="pageName">Lista de Pacientes</ui:define>
+
+	<ui:define name="content">
+
+		<div class="card ui-g ui-fluid">
+			<div class="ui-g-12 ui-lg-7 ui-md-6">
+				<p:outputLabel for="nomePaciente" value="Nome" />
+			</div>
+			<div class="ui-g-12 ui-lg-7 ui-md-6">
+				<p:inputText id="nomePaciente"
+					value="#{pacienteController.pessoa.nome}" />
+			</div>
+			
+			<div class="ui-g-12 ui-lg-1 ui-md-1 ">
+				<p:commandButton value="Pesquisar" id="searchBtn" 
+					update="tabelaPacientes" 
+					actionListener="#{pacienteController.pesquisar}">
+				</p:commandButton>
+			</div>
+
+			<p:dataTable id="tabelaPacientes" var="paciente"
+				value="#{pacienteController.pacientes}" selectionMode="single"
+				selection="#{pacienteController.paciente}" rowKey="#{paciente.id}"
+				rows="10" paginator="true" paginatorPosition="bottom"
+				currentPageReportTemplate="Página: {currentPage} de {totalPages}"
+				rowsPerPageTemplate="5,10,20"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+				<f:facet name="header">
+				</f:facet>
+				<p:column headerText="Nome" style="width:45%">
+					<h:outputText value="#{paciente.pessoa.nome}" id="nomePaciente" />
+				</p:column>
+
+				<p:column headerText="Idade" style="width:20%">
+					<h:outputText value="#{paciente.pessoa.idade}" id="idadePaciente" />
+				</p:column>
+
+				<p:column headerText="Telefone Celular" style="width:20%">
+					<h:outputText value="#{paciente.pessoa.telefoneCelular}"
+						id="telefonePaciente" />
+				</p:column>
+				<p:column style="width:15%">
+					<p:commandButton icon="fa fa-fw fa-edit"
+						action="#{pacienteController.editar}" title="Editar">
+						<f:setPropertyActionListener value="#{paciente}"
+							target="#{pacienteController.paciente}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>

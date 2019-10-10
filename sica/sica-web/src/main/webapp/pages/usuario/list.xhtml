@@ -1,0 +1,49 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="pageName">Lista de Usuários</ui:define>
+
+	<ui:define name="content">
+
+		<div class="card ui-g ui-fluid">
+
+			<p:dataTable id="tabelaColaboradores" var="colaborador"
+				value="#{usuarioController.colaboradores}" selectionMode="single"
+				selection="#{colaboradorController.colaborador}" rowKey="#{colaborador.id}"
+				rows="10" paginator="true" paginatorPosition="bottom"
+				currentPageReportTemplate="Página: {currentPage} de {totalPages}"
+				rowsPerPageTemplate="5,10,20"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+			
+				<f:facet name="header">
+				</f:facet>
+				<p:column headerText="Nome" style="width:45%">
+					<h:outputText value="#{colaborador.nome}" id="nomeColaborador" />
+				</p:column>
+
+				<p:column headerText="Idade" style="width:20%">
+					<h:outputText value="#{colaborador.email}" id="idadeColaborador" />
+				</p:column>
+
+				<p:column headerText="Telefone Celular" style="width:20%">
+					<h:outputText value="#{colaborador.telefoneCelular}"
+						id="telefoneColaborador" />
+				</p:column>
+				
+				<p:column style="width:15%">
+					<p:commandButton icon="fa fa-fw fa-edit"
+						action="#{colaboradorController.editar}" title="Editar">
+						<f:setPropertyActionListener value="#{colaborador}"
+							target="#{colaboradorController.colaborador}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>

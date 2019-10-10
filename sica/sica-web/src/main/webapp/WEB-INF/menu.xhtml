@@ -1,0 +1,31 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:h="http://java.sun.com/jsf/html" 
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ecuador">
+
+	<div class="layout-sidebar">
+        <div class="nano">
+            <div class="nano-content menu-scroll-content">
+                <h:form id="menuform" prependId="false">
+                    <pe:menu widgetVar="me" id="menu">
+                        <p:menuitem id="dashboard" value="Dashboard" icon="fa fa-fw fa-dashboard" outcome="/pages/dashboard" />
+                        <p:submenu id="pacientes" label="Pacientes" icon="fa fa-fw fa-folder-open">
+                        	<p:menuitem id="cadastroPaciente" value="Novo" icon="fa fa-fw fa-plus" outcome="/pages/paciente/form"/>
+                            <p:menuitem id="listaPacientes" value="Todos" icon="fa fa-fw fa-search" outcome="/pages/paciente/list"/>
+                            <p:menuitem id="ultimos5Paciente" value="Ultimos 5" icon="fa fa-fw fa-search" outcome="/pages/paciente/list"/>
+                        </p:submenu>
+                        <p:menuitem id="receituario" value="Receituário" icon="fa fa-fw fa-file-text"  />
+                        <p:menuitem id="relatorios" value="Relatórios" icon="fa fa-fw fa-area-chart" />
+                        <p:menuitem id="tarefas" value="Tarefas" icon="fa fa-fw fa-calendar" />
+                        <p:submenu id="usuarios" label="Usuários" icon="fa fa-fw fa-user">
+                        	<p:menuitem id="cadastroUsuario" value="Novo" icon="fa fa-fw fa-plus" outcome="/pages/usuario/form"/>
+                            <p:menuitem id="listaUsuarios" value="Todos" icon="fa fa-fw fa-search" outcome="/pages/usuario/list"/>
+                        </p:submenu>
+                    </pe:menu>
+                </h:form>
+            </div>
+        </div>
+    </div>
+</ui:composition>

@@ -1,0 +1,58 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" 
+	template="/WEB-INF/template.xhtml">
+
+	<ui:define name="pageName">Formulário do Usuário</ui:define>
+
+	<ui:define name="content">
+		<div class="ui-g ui-fluid">
+			<div class="card ui-g ui-lg">
+
+				<div class="ui-g-12 ui-lg-8 ui-md-6">
+					<p:outputLabel for="nomeUsuario" value="Nome" />
+					<p:inputText id="nomeUsuario" value="#{usuarioController.colaborador.nome}" />
+				</div>
+
+				<div class="ui-g-12 ui-lg-2 ui-md-2">
+					<p:outputLabel for="cpf" value="CPF" />
+					<p:inputText id="cpf" value="#{usuarioController.colaborador.cpf}" />
+				</div>
+
+				<div class="ui-g-12 ui-lg-2 ui-md-2">
+					<p:outputLabel for="telefoneCelular" value="Telefone Celular" />
+					<p:inputText id="telefoneCelular"
+						value="#{usuarioController.colaborador.telefoneCelular}" />
+				</div>
+
+				<div class="ui-g-12 ui-lg-6 ui-md-6">
+					<p:outputLabel for="email" value="E-mail" />
+					<p:inputText id="email"
+						value="#{usuarioController.colaborador.email}" />
+				</div>
+
+				<div class="ui-g-12 ui-lg-2 ui-md-1">
+					<p:outputLabel for="perfilUsuario" value="Perfil" />
+					<p:selectOneMenu id="perfilUsuario"
+						value="#{usuarioController.colaborador.perfil}">
+						<f:selectItem itemValue="" itemLabel="Selecione"/>
+						<f:selectItems value="#{usuarioController.perfilUsuarioEnumValues}" 
+							var="perfil" itemLabel="#{perfil.descricao}" itemValue="#{perfil}" />
+					</p:selectOneMenu>
+				</div>
+
+			</div>
+
+			<div class="ui-g-12 ui-lg-1 ui-md-1 ">
+				<p:commandButton value="Salvar" id="saveBtn"
+					actionListener="#{usuarioController.salvar}">
+				</p:commandButton>
+			</div>
+
+
+		</div>
+	</ui:define>
+
+</ui:composition>

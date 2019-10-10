@@ -1,0 +1,93 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="ui-g ui-lg">
+		
+		<div class="ui-g-12 ui-lg-2 ui-md-2">
+			<p:outputLabel for="dataExameFisico" value="Data" />
+			<p:calendar id="dataExameFisico" value="#{pacienteController.exameFisico.dataExame}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1">
+			<p:outputLabel for="pa" value="PA" />
+			<p:inputText id="pa" value="#{pacienteController.exameFisico.pa}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1">
+			<p:outputLabel for="fc" value="FC" />
+			<p:inputText id="fc" value="#{pacienteController.exameFisico.fc}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1">
+			<p:outputLabel for="peso" value="Peso" />
+			<p:inputText id="peso" value="#{pacienteController.exameFisico.peso}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1">
+			<p:outputLabel for="altura" value="Altura" />
+			<p:inputText id="altura" value="#{pacienteController.exameFisico.altura}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1">
+			<p:outputLabel for="imc" value="I.M.C." />
+			<p:inputText id="imc" value="#{pacienteController.exameFisico.imc}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-4 ui-md-4">
+			<p:outputLabel for="observacoes" value="Observações" />
+			<p:inputText id="observacoes" value="#{pacienteController.exameFisico.observacoes}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1 ">
+			<p:outputLabel for="salvarExameFisico" value="Botão" />
+			<p:commandButton value="Salvar" id="salvarExameFisico"
+				actionListener="#{pacienteController.incluirExameFisico}" 
+				update="tabelaExamesFisico, formContent" >
+			</p:commandButton>
+		</div>
+		
+		<div class="ui-g-12">
+			<p:dataTable var="exameFisico" id="tabelaExamesFisico"
+				value="#{pacienteController.paciente.examesFisico}" paginator="true"
+				paginatorPosition="bottom" emptyMessage="Nenhum registro encontrado"
+				rows="5" lazy="true" filterDelay="1000"
+				currentPageReportTemplate="Página: {currentPage} de {totalPages}"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+				
+				<p:column headerText="Data">
+					<h:outputText value="#{exameFisico.dataExame}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="PA">
+					<h:outputText value="#{exameFisico.pa}" />
+				</p:column>
+
+				<p:column headerText="FC" >
+					<h:outputText value="#{exameFisico.fc}" />
+				</p:column>
+
+				<p:column headerText="Peso" >
+					<h:outputText value="#{exameFisico.peso}" />
+				</p:column>
+				
+				<p:column headerText="Altura" >
+					<h:outputText value="#{exameFisico.altura}" />
+				</p:column>
+				
+				<p:column headerText="IMC" >
+					<h:outputText value="#{exameFisico.imc}" />
+				</p:column>
+
+				<p:column colspan="2" headerText="Opções" style="width:15%" />
+
+			</p:dataTable>
+		</div>
+		
+	</div>
+
+</ui:composition>

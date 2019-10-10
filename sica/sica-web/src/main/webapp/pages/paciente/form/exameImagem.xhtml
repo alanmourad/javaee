@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<div class="ui-g ui-lg">
+	
+		<div class="ui-g-12 ui-lg-2 ui-md-2">
+			<p:outputLabel for="dataExameImagem" value="Data do Exame" />
+			<p:calendar id="dataExameImagem" 
+				value="#{pacienteController.exameImagem.dataExame}"
+				pattern="dd/MM/yyyy"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-4 ui-md-4">
+			<p:outputLabel for="invasaoRM" value="Invasão RM" />
+			<p:inputText id="invasaoRM" 
+				value="#{pacienteController.exameImagem.invasaoRM}"/>
+		</div>
+	
+       	<div class="ui-g-12 ui-lg-12 ui-md-12">
+			<p:outputLabel for="ressonanciaMagnetica" value="Ressonância Magnética" />
+	        <p:inputTextarea id="ressonanciaMagnetica" rows="3" 
+	        	value="#{pacienteController.exameImagem.ressonanciaMagnetica}"/>
+		</div>
+		
+       	<div class="ui-g-12 ui-lg-12 ui-md-12">
+			<p:outputLabel for="tomografia" value="Tomografia Computadorizada" />
+	        <p:inputTextarea id="tomografia" rows="3" 
+	        	value="#{pacienteController.exameImagem.tomografiaComputadorizada}"/>
+		</div>
+		
+		<div class="ui-g-12 ui-lg-1 ui-md-1 ">
+			<p:commandButton value="Salvar" id="salvarExameImagem"
+				actionListener="#{pacienteController.incluirExameImagem}"
+				update="tabelaExamesImagem formContent">
+			</p:commandButton>
+		</div>
+		
+		<div class="ui-g-12">
+			<p:dataTable var="exameImagem" id="tabelaExamesImagem"
+				value="#{pacienteController.paciente.examesImagem}" paginator="true"
+				paginatorPosition="bottom" emptyMessage="Nenhum registro encontrado"
+				rows="5" lazy="true" filterDelay="1000"
+				currentPageReportTemplate="Página: {currentPage} de {totalPages}"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}">
+				
+				<p:column headerText="Data">
+					<h:outputText value="#{exameImagem.dataExame}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Ressância Mag.">
+					<h:outputText value="#{exameImagem.ressonanciaMagnetica}" />
+				</p:column>
+
+				<p:column headerText="Invasão RM">
+					<h:outputText value="#{exameImagem.invasaoRM}" />
+				</p:column>
+
+				<p:column headerText="Tomografia" >
+					<h:outputText value="#{exameImagem.tomografiaComputadorizada}" />
+				</p:column>
+				
+				<p:column colspan="2" headerText="Opções" style="width:15%" />
+
+			</p:dataTable>
+		</div>    
+        
+	</div>
+
+</ui:composition>

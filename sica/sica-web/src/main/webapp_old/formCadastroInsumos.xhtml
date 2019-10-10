@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="/WEB-INF/templates/main.xhtml">
+
+<!-- 	<ui:include src="/WEB-INF/templates/main.xhtml"> -->
+<!-- 		</ui:include> -->
+
+	<br></br>
+	<ui:define name="conteudo">
+		<h:form>
+
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			<p:growl id="growl" sticky="true" showDetail="false" />
+
+
+			<p:tab>
+				<p:panel header="Cadastro de usuário">
+					<p:panelGrid columns="2">
+						<h:outputText value="Nome: *" />
+						<h:inputText value="#{newUser.name}" class="form-control"
+							required="true" label="name" style="width:990px" />
+
+
+
+						<h:outputText value="Email: *" />
+						<h:inputText value="#{newUser.email}" required="true"
+							label="email" class="form-control" style="width:990px" />
+
+
+						<h:outputText value="Telefone: *" />
+						<h:inputText value="#{newUser.phoneNumber}" class="form-control"
+							style="width:500px" />
+
+
+						<p:outputLabel for="tipoAcesso" value="Tipo de acesso: *" />
+						<h:selectOneMenu id="tipoAcesso"
+							class="custom-select d-block w-100" value="#{newUser.tipoAcesso}"
+							style="width:990px">
+							<f:selectItem itemLabel="Selecione tipo" itemValue="" />
+							<f:selectItem itemLabel="Engenharia" itemValue="Engenharia" />
+							<f:selectItem itemLabel="Manutencao" itemValue="Manutencao" />
+							<f:selectItem itemLabel="Consultoria" itemValue="Consultoria" />
+						</h:selectOneMenu>
+						<h:outputLabel value="Senha: *" style="width:300px" />
+
+
+						<p:inputText id="date" required="true"
+							value="#{newUser.password}" class="form-control"
+							style="width:200px" />
+
+
+					</p:panelGrid>
+
+					<br></br>
+					<br></br>
+					<h:commandButton id="register"
+						action="#{usuarioController.registerUser}" value="Salvar"
+						styleClass="register" class="btn btn-outline-primary my-2 my-sm-0" />
+					<h:messages styleClass="messages" errorClass="invalid"
+						infoClass="valid" warnClass="warning" globalOnly="true" />
+				</p:panel>
+
+			</p:tab>
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>
