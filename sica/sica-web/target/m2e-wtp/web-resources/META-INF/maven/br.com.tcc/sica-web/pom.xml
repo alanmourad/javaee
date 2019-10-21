@@ -90,7 +90,14 @@
 			<artifactId>primefaces</artifactId>
 			<version>7.0</version>
 		</dependency>
-
+		
+		<!-- https://mvnrepository.com/artifact/org.primefaces.themes/all-themes -->
+		<dependency>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>1.0.10</version>
+		</dependency>
+		
 
 		<!-- JSR-303 (Bean Validation) Implementation -->
 		<!-- Provides portable constraints such as @Email -->
@@ -108,6 +115,14 @@
 		</dependency>
 
 	</dependencies>
+	
+	<repositories>
+        <repository>
+            <id>Primefaces Repo</id>
+            <url>http://repository.primefaces.org/</url>
+        </repository>
+    </repositories>
+	
 
 	<build>
 		<finalName>${project.artifactId}</finalName>

@@ -36,10 +36,9 @@ import br.com.tcc.sica.service.UsuarioRegistro;
 // EL name
 // Read more about the @Model stereotype in this FAQ:
 // http://www.cdi-spec.org/faq/#accordion6
-@Model
-@ManagedBean(name = "LoginMB")
+
+@Named
 @ViewScoped
-@SessionScoped
 public class UsuarioController {
 
     @Inject

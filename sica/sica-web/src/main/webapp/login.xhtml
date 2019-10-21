@@ -2,49 +2,77 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-	<f:facet name="first">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-	</f:facet>
-	<title>Clausius</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Página de Login</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js" />
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+
+.login-form {
+	width: 340px;
+	margin: 50px auto;
+}
+
+.login-form form {
+	margin-bottom: 15px;
+	background: #f7f7f7;
+	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+	padding: 30px;
+}
+
+.login-form h2 {
+	margin: 0 0 40px;
+}
+
+.form-control, .btn {
+	min-height: 38px;
+	border-radius: 2px;
+}
+
+.btn {
+	font-size: 15px;
+	font-weight: bold;
+}
+</style>
+
+ 
 </h:head>
 
-<h:body styleClass="login-body">
-	<div class="login-image">
-		<div class="login-panel">
-			<h:form id="formLogin" enctype="multipart/form-data" prependId="false">
-				<p:growl id="msgs" autoUpdate="true" life="4000"/>
-				<p:outputLabel id="emailLabel" for="email" value="E-mail"/>
-				<p:inputText id="email" required="true"
-					value="#{loginController.email}" 
-					requiredMessage="Email não pode ser nulo" />
-				<p:outputLabel id="senhaLabel" for="senha" value="Senha"/>
-				<p:password id="senha" required="true" name="senha"
-					value="#{loginController.senha}"
-					requiredMessage="Senha não pode ser nula" />
-				<div class="checkbox-container">
-					<p:commandButton id="login" name="login" value="Login" ajax="false"
-						action="#{loginController.login}" />
-				</div>
+ 
 
-				<div class="separator"></div>
+<body>
+	<div class="login-form">
+	
+		<h:form>
+			<h2 class="text-center">Login</h2>
+		
+	  <p:messages id="messages" />
+			<p:outputLabel for="name" value="Nome 
+      Usuário:" />
+			<p:inputText id="name" value="#{newUser.name}" class="form-control" placeholder="Usuário" />
 
-				<a href="#" class="subinfo"> 
-				
-					<span>Esqueceu a senha?</span>
-				</a>
-			</h:form>
-		</div>
+			<div class="form-group">
+				<p:outputLabel for="password" value="Senha:" />
+				<p:password id="password" value="#{newUser.password}"
+					class="form-control" placeholder="Senha" />
+			</div>
+			<div class="form-group">
+
+				<h:commandButton value="Entrar" id="loginUsuario"
+					action="#{usuarioController.loginUsuario}"
+					styleClass="btn btn-primary btn-block" />
+				 
+			</div>
+
+		</h:form>
 	</div>
-	<h:outputStylesheet name="css/layout-indigo.css"
-		library="ecuador-layout" />
-</h:body>
-
+</body>
 </html>
